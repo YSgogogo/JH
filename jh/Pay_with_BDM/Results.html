@@ -28,16 +28,16 @@
         <thead>
         <tr>
 
-            <td> Additional Earning </td>
+            <td> Additional Earning (40 points = £1) </td>
             <td> show-up</td>
             <td> Total </td>
         </tr>
         </thead>
 
         <tr class="active-row">
-            <td class="hide_bottom">   </td>
+            <td class="hide_bottom"> {{participant.payoff}}  </td>
             <td class="hide_bottom"> £5.00 </td>
-            <td class="hide_bottom">  </td>
+            <td class="hide_bottom"> {{participant.payoff_plus_participation_fee()}} </td>
         </tr>
 
 
@@ -47,7 +47,7 @@
 
 
 <ul>
-  <li>  Your final payment in this experiment is therefore £ . </li>
+  <li>  Your final payment in this experiment is therefore {{participant.payoff_plus_participation_fee()}} . </li>
   <li>  We are preparing for your payment. Please wait...</li>
 </ul>
 
