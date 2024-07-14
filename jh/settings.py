@@ -8,6 +8,18 @@ SESSION_CONFIGS = [
         app_sequence=['Pay_with_BDM'],
         num_demo_participants=1,
     ),
+    dict(
+        name='Pay_with_loss_function',
+        display_name="Pay_with_loss_function",
+        app_sequence=['Pay_with_loss_function'],
+        num_demo_participants=1,
+    ),
+    dict(
+        name='Pay_with_weight',
+        display_name="Pay_with_weight",
+        app_sequence=['Pay_with_weight'],
+        num_demo_participants=1,
+    ),
 ]
 
 
@@ -18,7 +30,7 @@ MIDDLEWARE = [
 
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.025, participation_fee=5.00, doc=""
+    real_world_currency_per_point=0.0025, participation_fee=5.00, doc=""
 )
 
 PARTICIPANT_FIELDS = []

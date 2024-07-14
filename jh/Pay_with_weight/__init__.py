@@ -2,23 +2,19 @@ import random
 import math
 from otree.api import *
 
-doc = """Pay_with_loss_function
+doc = """Pay_with_weight
 """
 
-
 class Constants(BaseConstants):
-    name_in_url = 'Pay_with_loss_function'
+    name_in_url = 'Pay_with_weight'
     players_per_group = None
     num_rounds = 80
-
 
 class Subsession(BaseSubsession):
     pass
 
-
 class Group(BaseGroup):
     pass
-
 
 class Player(BasePlayer):
     bar_1 = models.FloatField()
@@ -30,40 +26,59 @@ class Player(BasePlayer):
     random_number_g2 = models.FloatField()
     normal_number_g1 = models.FloatField()
     normal_number_g2 = models.FloatField()
-    payoff_1 = models.FloatField()
-    payoff_2 = models.FloatField()
-    payoff_3 = models.FloatField()
-    payoff_4 = models.FloatField()
-    payoff_5 = models.FloatField()
+    payoff_20 = models.FloatField(initial=0)
+    payoff_40 = models.FloatField(initial=0)
+    payoff_60 = models.FloatField(initial=0)
+    payoff_80 = models.FloatField(initial=0)
+    final_payoff = models.FloatField(initial=0)
+
+    def calculate_round_payoff(self, generated_number):
+        if -10 <= generated_number < -6:
+            return 100 * self.bar_1
+        elif -6 <= generated_number < -2:
+            return 100 * self.bar_2
+        elif -2 <= generated_number < 2:
+            return 100 * self.bar_3
+        elif 2 <= generated_number < 6:
+            return 100 * self.bar_4
+        elif 6 <= generated_number <= 10:
+            return 100 * self.bar_5
+        else:
+            return 0
+
+    def generate_number(self, distribution):
+        if distribution == 'uniform':
+            generated_number = round(random.uniform(-10, 10), 2)
+        elif distribution == 'normal':
+            generated_number = round(max(-10, min(10, random.gauss(0, math.sqrt(33.33)))), 2)
+        return generated_number
 
     def calculate_payoff(self):
-        if self.round_number in [20, 80]:
-            log_sum = sum(math.log(getattr(self, f'bar_{i}') / 100) for i in range(1, 6))
-            payoff = max(0, 1000 + 20 * log_sum)
-            self.payoff = payoff
-        elif self.round_number in [40, 60]:
-            log_sum = (
-                0.1493 * math.log(self.bar_1 / 100) +
-                0.2152 * math.log(self.bar_2 / 100) +
-                0.2710 * math.log(self.bar_3 / 100) +
-                0.2153 * math.log(self.bar_4 / 100) +
-                0.1493 * math.log(self.bar_5 / 100)
-            )
-            payoff = max(0, 1000 + 100 * log_sum)
-            self.payoff = payoff
+        if self.round_number == 20:
+            generated_number = self.generate_number('uniform')
+            self.payoff_20 = self.calculate_round_payoff(generated_number)
+        elif self.round_number == 40:
+            generated_number = self.generate_number('normal')
+            self.payoff_40 = self.calculate_round_payoff(generated_number)
+        elif self.round_number == 60:
+            generated_number = self.generate_number('normal')
+            self.payoff_60 = self.calculate_round_payoff(generated_number)
+        elif self.round_number == 80:
+            generated_number = self.generate_number('uniform')
+            self.payoff_80 = self.calculate_round_payoff(generated_number)
 
+            self.final_payoff = random.choice([self.payoff_20, self.payoff_40, self.payoff_60, self.payoff_80])
+            self.payoff = self.final_payoff
 
 class Welcome(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-
 class Instructions(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
-
 
 class Round_1_1(Page):
     @staticmethod
@@ -78,7 +93,6 @@ class Round_1_1(Page):
     def is_displayed(player: Player):
         return player.round_number <= 20
 
-
 class Round_1_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
@@ -91,7 +105,6 @@ class Round_1_2(Page):
     @staticmethod
     def is_displayed(player: Player):
         return 20 < player.round_number <= 40
-
 
 class Round_2_1(Page):
     @staticmethod
@@ -107,7 +120,6 @@ class Round_2_1(Page):
     def is_displayed(player: Player):
         return 40 < player.round_number <= 60
 
-
 class Round_2_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
@@ -122,7 +134,6 @@ class Round_2_2(Page):
     def is_displayed(player: Player):
         return player.round_number > 60
 
-
 class Decision(Page):
     form_model = 'player'
     form_fields = ['bar_1', 'bar_2', 'bar_3', 'bar_4', 'bar_5']
@@ -134,7 +145,6 @@ class Decision(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.calculate_payoff()
-
 
 class Results(Page):
     @staticmethod
