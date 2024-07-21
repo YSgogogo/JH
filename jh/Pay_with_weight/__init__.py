@@ -26,12 +26,8 @@ class Player(BasePlayer):
     random_number_g2 = models.FloatField()
     normal_number_g1 = models.FloatField()
     normal_number_g2 = models.FloatField()
-    payoff_20 = models.FloatField(initial=0)
-    payoff_40 = models.FloatField(initial=0)
-    payoff_60 = models.FloatField(initial=0)
-    payoff_80 = models.FloatField(initial=0)
-    final_payoff = models.FloatField(initial=0)
-
+    pre_payoff = models.FloatField()
+    selected_round = models.FloatField()
     def calculate_round_payoff(self, generated_number):
         if -10 <= generated_number < -6:
             return 100 * self.bar_1
@@ -56,19 +52,17 @@ class Player(BasePlayer):
     def calculate_payoff(self):
         if self.round_number == 20:
             generated_number = self.generate_number('uniform')
-            self.payoff_20 = self.calculate_round_payoff(generated_number)
+            self.pre_payoff = self.calculate_round_payoff(generated_number)
         elif self.round_number == 40:
             generated_number = self.generate_number('normal')
-            self.payoff_40 = self.calculate_round_payoff(generated_number)
+            self.pre_payoff = self.calculate_round_payoff(generated_number)
         elif self.round_number == 60:
             generated_number = self.generate_number('normal')
-            self.payoff_60 = self.calculate_round_payoff(generated_number)
+            self.pre_payoff = self.calculate_round_payoff(generated_number)
         elif self.round_number == 80:
             generated_number = self.generate_number('uniform')
-            self.payoff_80 = self.calculate_round_payoff(generated_number)
+            self.pre_payoff = self.calculate_round_payoff(generated_number)
 
-            self.final_payoff = random.choice([self.payoff_20, self.payoff_40, self.payoff_60, self.payoff_80])
-            self.payoff = self.final_payoff
 
 class Welcome(Page):
     @staticmethod
@@ -140,16 +134,31 @@ class Decision(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number in [20, 40, 60, 80]
+        return player.round_number in [20, 40, 60]
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.calculate_payoff()
 
+class Decision_last_round(Page):
+    form_model = 'player'
+    form_fields = ['bar_1', 'bar_2', 'bar_3', 'bar_4', 'bar_5']
+
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 80
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.calculate_payoff()
+        selected_round = random.choice([20, 40, 60, 80])
+        player.selected_round = selected_round
+        player.payoff = player.in_round(selected_round).pre_payoff
+        player.payoff *= 0.01
 class Results(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 80
 
 
-page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Results]
+page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Decision_last_round, Results]
