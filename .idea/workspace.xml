@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5ea0bd2-a007-48fa-8d95-b400bdc3d0a1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Decision_last_round.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Instructions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_1_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_1_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_1_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_2_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_2_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_2_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Instructions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Results.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_1_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_1_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_1_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_2_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_2_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_2_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Instructions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Results.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,15 +22,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/billshi/PycharmProjects/JH/jh&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/billshi/PycharmProjects/JH/jh/Pay_with_weight"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/jh/Pay_with_weight" />
       <recent name="$PROJECT_DIR$/jh" />
       <recent name="$PROJECT_DIR$/jh/game" />
     </key>
