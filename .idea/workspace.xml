@@ -5,18 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5ea0bd2-a007-48fa-8d95-b400bdc3d0a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Decision.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Instructions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Results.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Welcome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jh/Pay_with_weight/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jh/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/jh/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Instructions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_1_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_1_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_1_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_2_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_2_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_BDM/Round_2_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Instructions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Results.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_1_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_1_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_1_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_2_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_2_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_loss_function/Round_2_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Instructions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Results.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_1_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/jh/Pay_with_weight/Round_2_2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
