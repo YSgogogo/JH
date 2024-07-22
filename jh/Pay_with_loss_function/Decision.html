@@ -7,7 +7,7 @@
     <div style="display: flex; align-items: flex-end; height: 300px; border: 1px solid black; position: relative; padding-left: 50px;">
         <div style="margin: 0 20px; text-align: center; position: relative;">
             <div id="bar1" style="width: 100px; background-color: blue; position: absolute; bottom: 0; height: 0%;"></div>
-            <div style="width: 100px; position: relative; top: 60px;"> < -6</div>
+            <div style="width: 100px; position: relative; top: 60px;"> <p class="small-font">smaller than -6</p></div>
             <div style="display: flex; align-items: center; justify-content: center; position: relative; top: 70px;">
                 <input type="range" id="slider1" name="bar_1" min="0.01" max="99.96" step="0.01" value="0.01" oninput="updateBars()" style="width: 80px; background: blue;">
                 <span id="input1Value">0.01</span>%
@@ -15,7 +15,7 @@
         </div>
         <div style="margin: 0 20px; text-align: center; position: relative;">
             <div id="bar2" style="width: 100px; background-color: green; position: absolute; bottom: 0; height: 0%;"></div>
-            <div style="width: 100px; position: relative; top: 60px;"> -6 < -2</div>
+            <div style="width: 100px; position: relative; top: 60px;"> <p class="small-font">between -6 and -2</p></div>
             <div style="display: flex; align-items: center; justify-content: center; position: relative; top: 70px;">
                 <input type="range" id="slider2" name="bar_2" min="0.01" max="99.96" step="0.01" value="0.01" oninput="updateBars()" style="width: 80px; background: green;">
                 <span id="input2Value">0.01</span>%
@@ -23,7 +23,7 @@
         </div>
         <div style="margin: 0 20px; text-align: center; position: relative;">
             <div id="bar3" style="width: 100px; background-color: red; position: absolute; bottom: 0; height: 0%;"></div>
-            <div style="width: 100px; position: relative; top: 60px;"> -2 < 2</div>
+            <div style="width: 100px; position: relative; top: 60px;"> <p class="small-font">between -2 and 2</p></div>
             <div style="display: flex; align-items: center; justify-content: center; position: relative; top: 70px;">
                 <input type="range" id="slider3" name="bar_3" min="0.01" max="99.96" step="0.01" value="0.01" oninput="updateBars()" style="width: 80px; background: red;">
                 <span id="input3Value">0.01</span>%
@@ -31,7 +31,7 @@
         </div>
         <div style="margin: 0 20px; text-align: center; position: relative;">
             <div id="bar4" style="width: 100px; background-color: orange; position: absolute; bottom: 0; height: 0%;"></div>
-            <div style="width: 100px; position: relative; top: 60px;"> 2 < 6</div>
+            <div style="width: 100px; position: relative; top: 60px;"> <p class="small-font">between 2 and 6</p></div>
             <div style="display: flex; align-items: center; justify-content: center; position: relative; top: 70px;">
                 <input type="range" id="slider4" name="bar_4" min="0.01" max="99.96" step="0.01" value="0.01" oninput="updateBars()" style="width: 80px; background: orange;">
                 <span id="input4Value">0.01</span>%
@@ -39,7 +39,7 @@
         </div>
         <div style="margin: 0 20px; text-align: center; position: relative;">
             <div id="bar5" style="width: 100px; background-color: purple; position: absolute; bottom: 0; height: 0%;"></div>
-            <div style="width: 100px; position: relative; top: 60px;"> > 6 </div>
+            <div style="width: 100px; position: relative; top: 60px;"> <p class="small-font">greater than 6</p> </div>
             <div style="display: flex; align-items: center; justify-content: center; position: relative; top: 70px;">
                 <span id="input5Value">0.01</span>%
                 <input type="hidden" id="hiddenBar5" name="bar_5" value="0.01">
@@ -48,6 +48,9 @@
     </div>
 
     <style>
+        .small-font {
+            font-size: 11px;
+        }
         .submit-button {
             text-align: center;
             background-color: #007BFF;

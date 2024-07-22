@@ -86,24 +86,23 @@ class Round_1_1(Page):
 class Round_1_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        normal_number_g1 = random.gauss(0, math.sqrt(33.33))
-        player.normal_number_g1 = round(max(-10, min(10, normal_number_g1)), 2)
+        random_number_g2 = round(random.uniform(-10, 10), 2)
+        player.random_number_g2 = random_number_g2
         return {
-            'normal_number_g1': player.normal_number_g1
+            'random_number_g2': random_number_g2
         }
 
     @staticmethod
     def is_displayed(player: Player):
         return 20 < player.round_number <= 40
 
-
 class Round_2_1(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        normal_number_g2 = random.gauss(0, math.sqrt(33.33))
-        player.normal_number_g2 = round(max(-10, min(10, normal_number_g2)), 2)
+        normal_number_g1 = random.gauss(0, math.sqrt(33.33))
+        player.normal_number_g1 = round(normal_number_g1, 2)
         return {
-            'normal_number_g2': player.normal_number_g2,
+            'normal_number_g1': player.normal_number_g1,
             'adjusted_round_number': player.round_number - 40
         }
 
@@ -115,10 +114,10 @@ class Round_2_1(Page):
 class Round_2_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        random_number_g2 = round(random.uniform(-10, 10), 2)
-        player.random_number_g2 = random_number_g2
+        normal_number_g2 = random.gauss(0, math.sqrt(33.33))
+        player.normal_number_g2 = round(normal_number_g2, 2)
         return {
-            'random_number_g2': random_number_g2,
+            'normal_number_g2': player.normal_number_g2,
             'adjusted_round_number': player.round_number - 40
         }
 

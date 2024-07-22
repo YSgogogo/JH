@@ -29,7 +29,7 @@ class Player(BasePlayer):
     pre_payoff = models.FloatField()
     selected_round = models.FloatField()
     def calculate_round_payoff(self, generated_number):
-        if -10 <= generated_number < -6:
+        if generated_number < -6:
             return 100 * self.bar_1
         elif -6 <= generated_number < -2:
             return 100 * self.bar_2
@@ -37,7 +37,7 @@ class Player(BasePlayer):
             return 100 * self.bar_3
         elif 2 <= generated_number < 6:
             return 100 * self.bar_4
-        elif 6 <= generated_number <= 10:
+        elif 6 <= generated_number:
             return 100 * self.bar_5
         else:
             return 0
@@ -46,7 +46,7 @@ class Player(BasePlayer):
         if distribution == 'uniform':
             generated_number = round(random.uniform(-10, 10), 2)
         elif distribution == 'normal':
-            generated_number = round(max(-10, min(10, random.gauss(0, math.sqrt(33.33)))), 2)
+            generated_number = random.gauss(0, math.sqrt(33.33))
         return generated_number
 
     def calculate_payoff(self):
@@ -54,13 +54,13 @@ class Player(BasePlayer):
             generated_number = self.generate_number('uniform')
             self.pre_payoff = self.calculate_round_payoff(generated_number)
         elif self.round_number == 40:
-            generated_number = self.generate_number('normal')
+            generated_number = self.generate_number('uniform')
             self.pre_payoff = self.calculate_round_payoff(generated_number)
         elif self.round_number == 60:
             generated_number = self.generate_number('normal')
             self.pre_payoff = self.calculate_round_payoff(generated_number)
         elif self.round_number == 80:
-            generated_number = self.generate_number('uniform')
+            generated_number = self.generate_number('normal')
             self.pre_payoff = self.calculate_round_payoff(generated_number)
 
 
@@ -90,10 +90,10 @@ class Round_1_1(Page):
 class Round_1_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        normal_number_g1 = random.gauss(0, math.sqrt(33.33))
-        player.normal_number_g1 = round(max(-10, min(10, normal_number_g1)), 2)
+        random_number_g2 = round(random.uniform(-10, 10), 2)
+        player.random_number_g2 = random_number_g2
         return {
-            'normal_number_g1': player.normal_number_g1
+            'random_number_g2': random_number_g2
         }
 
     @staticmethod
@@ -103,10 +103,10 @@ class Round_1_2(Page):
 class Round_2_1(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        normal_number_g2 = random.gauss(0, math.sqrt(33.33))
-        player.normal_number_g2 = round(max(-10, min(10, normal_number_g2)), 2)
+        normal_number_g1 = random.gauss(0, math.sqrt(33.33))
+        player.normal_number_g1 = round(normal_number_g1, 2)
         return {
-            'normal_number_g2': player.normal_number_g2,
+            'normal_number_g1': player.normal_number_g1,
             'adjusted_round_number': player.round_number - 40
         }
 
@@ -117,10 +117,10 @@ class Round_2_1(Page):
 class Round_2_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        random_number_g2 = round(random.uniform(-10, 10), 2)
-        player.random_number_g2 = random_number_g2
+        normal_number_g2 = random.gauss(0, math.sqrt(33.33))
+        player.normal_number_g2 = round(normal_number_g2, 2)
         return {
-            'random_number_g2': random_number_g2,
+            'normal_number_g2': player.normal_number_g2,
             'adjusted_round_number': player.round_number - 40
         }
 

@@ -37,11 +37,11 @@ class Player(BasePlayer):
     payoff_5 = models.FloatField()
 
     def calculate_payoff(self):
-        if self.round_number in [20, 80]:
+        if self.round_number in [20, 40]:
             log_sum = sum(math.log(getattr(self, f'bar_{i}') / 100) for i in range(1, 6))
             payoff = max(0, 1000 + 20 * log_sum)
             self.payoff = payoff
-        elif self.round_number in [40, 60]:
+        elif self.round_number in [60, 80]:
             log_sum = (
                 0.1493 * math.log(self.bar_1 / 100) +
                 0.2152 * math.log(self.bar_2 / 100) +
@@ -82,10 +82,10 @@ class Round_1_1(Page):
 class Round_1_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        normal_number_g1 = random.gauss(0, math.sqrt(33.33))
-        player.normal_number_g1 = round(max(-10, min(10, normal_number_g1)), 2)
+        random_number_g2 = round(random.uniform(-10, 10), 2)
+        player.random_number_g2 = random_number_g2
         return {
-            'normal_number_g1': player.normal_number_g1
+            'random_number_g2': random_number_g2
         }
 
     @staticmethod
@@ -96,10 +96,10 @@ class Round_1_2(Page):
 class Round_2_1(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        normal_number_g2 = random.gauss(0, math.sqrt(33.33))
-        player.normal_number_g2 = round(max(-10, min(10, normal_number_g2)), 2)
+        normal_number_g1 = random.gauss(0, math.sqrt(33.33))
+        player.normal_number_g1 = round(normal_number_g1, 2)
         return {
-            'normal_number_g2': player.normal_number_g2,
+            'normal_number_g1': player.normal_number_g1,
             'adjusted_round_number': player.round_number - 40
         }
 
@@ -111,10 +111,10 @@ class Round_2_1(Page):
 class Round_2_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        random_number_g2 = round(random.uniform(-10, 10), 2)
-        player.random_number_g2 = random_number_g2
+        normal_number_g2 = random.gauss(0, math.sqrt(33.33))
+        player.normal_number_g2 = round(normal_number_g2, 2)
         return {
-            'random_number_g2': random_number_g2,
+            'normal_number_g2': player.normal_number_g2,
             'adjusted_round_number': player.round_number - 40
         }
 
