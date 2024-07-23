@@ -28,6 +28,11 @@ class Player(BasePlayer):
     normal_number_g2 = models.FloatField()
     pre_payoff = models.FloatField()
     selected_round = models.FloatField()
+    a = models.IntegerField()
+    b = models.IntegerField()
+    c = models.IntegerField()
+    d = models.IntegerField()
+
     def calculate_round_payoff(self, generated_number):
         if generated_number < -6:
             return 100 * self.bar_1
@@ -50,24 +55,31 @@ class Player(BasePlayer):
         return generated_number
 
     def calculate_payoff(self):
-        if self.round_number == 20:
+        if self.round_number == self.in_round(1).a + 20:
             generated_number = self.generate_number('uniform')
             self.pre_payoff = self.calculate_round_payoff(generated_number)
-        elif self.round_number == 40:
+        elif self.round_number == self.in_round(1).a + 40:
             generated_number = self.generate_number('uniform')
             self.pre_payoff = self.calculate_round_payoff(generated_number)
-        elif self.round_number == 60:
+        elif self.round_number == self.in_round(1).b + 20:
             generated_number = self.generate_number('normal')
             self.pre_payoff = self.calculate_round_payoff(generated_number)
-        elif self.round_number == 80:
+        elif self.round_number == self.in_round(1).b + 40:
             generated_number = self.generate_number('normal')
             self.pre_payoff = self.calculate_round_payoff(generated_number)
+
+    def set_a_b(self):
+        self.a, self.b, self.c, self.d = random.choice([(40, 0, 2, 1), (0, 40, 1, 2)])
 
 
 class Welcome(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.set_a_b()
 
 class Instructions(Page):
     @staticmethod
@@ -80,12 +92,14 @@ class Round_1_1(Page):
         random_number_g1 = round(random.uniform(-10, 10), 2)
         player.random_number_g1 = random_number_g1
         return {
-            'random_number_g1': random_number_g1
+            'random_number_g1': random_number_g1,
+            'adjusted_round_number': player.round_number - player.in_round(1).a,
+            'adjusted_number': player.in_round(1).c
         }
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number <= 20
+        return player.in_round(1).a < player.round_number <= player.in_round(1).a +20
 
 class Round_1_2(Page):
     @staticmethod
@@ -93,12 +107,14 @@ class Round_1_2(Page):
         random_number_g2 = round(random.uniform(-10, 10), 2)
         player.random_number_g2 = random_number_g2
         return {
-            'random_number_g2': random_number_g2
+            'random_number_g2': random_number_g2,
+            'adjusted_round_number': player.round_number - player.in_round(1).a,
+            'adjusted_number': player.in_round(1).c
         }
 
     @staticmethod
     def is_displayed(player: Player):
-        return 20 < player.round_number <= 40
+        return player.in_round(1).a + 20 < player.round_number <= player.in_round(1).a + 40
 
 class Round_2_1(Page):
     @staticmethod
@@ -107,12 +123,13 @@ class Round_2_1(Page):
         player.normal_number_g1 = round(normal_number_g1, 2)
         return {
             'normal_number_g1': player.normal_number_g1,
-            'adjusted_round_number': player.round_number - 40
+            'adjusted_round_number': player.round_number - player.in_round(1).b,
+            'adjusted_number': player.in_round(1).d
         }
 
     @staticmethod
     def is_displayed(player: Player):
-        return 40 < player.round_number <= 60
+        return player.in_round(1).b < player.round_number <= player.in_round(1).b + 20
 
 class Round_2_2(Page):
     @staticmethod
@@ -121,12 +138,13 @@ class Round_2_2(Page):
         player.normal_number_g2 = round(normal_number_g2, 2)
         return {
             'normal_number_g2': player.normal_number_g2,
-            'adjusted_round_number': player.round_number - 40
+            'adjusted_round_number': player.round_number - player.in_round(1).b,
+            'adjusted_number': player.in_round(1).d
         }
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number > 60
+        return player.in_round(1).b + 20 < player.round_number <= player.in_round(1).b + 40
 
 class Decision(Page):
     form_model = 'player'
