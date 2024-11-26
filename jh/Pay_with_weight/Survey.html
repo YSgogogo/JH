@@ -1,0 +1,112 @@
+{{ extends 'global/Page.html' }}
+   {{ block title }}
+ <div style="text-align: center;">
+     <h1>Survey</h1>
+ </div>
+    {{ endblock }}
+
+{{ block content }}
+        <style>
+            .ribbon {
+               position: relative;
+               top: -16px;
+               right: -706px;
+            }
+        </style>
+
+
+<div style="text-align: justify;" class="card bg-light mb-3">
+    <div class="card-body">
+                <br>
+<ul>
+  <li>  Some further questions.  </li>
+</ul>
+
+<h2> Age </h2>
+<ul>
+    {{form.age}}
+</ul>
+<br>
+<h2> Gender </h2>
+<ul>
+    {{form.Gender}}
+</ul>
+<br>
+<h2> Subject </h2>
+<ul>
+    {{form.Subject}}
+</ul>
+<br>
+<h5> Have you learned about distributions in mathematics before, such as the uniform distribution and the normal distribution? </h5>
+<ul>
+    <textarea name="{{form.Have_you_learned.name}}" rows="5" cols="40">{{form.Have_you_learned.data or ''}}</textarea>
+</ul>
+<br>
+<h5> Did you truthfully report your belief, or did you strategically adjust your response to maximize your return? Please provide more details. </h5>
+<ul>
+    <textarea name="{{form.truthfully_report.name}}" rows="5" cols="40">{{form.truthfully_report.data or ''}}</textarea>
+</ul>
+         <br>
+<h5> Do you keep a record of the number series? How does the number series influence your weight allocation across the bins?</h5>
+<ul>
+         <textarea name="{{ form.keep_a_record.name }}" rows="5" cols="40">
+             {{form.keep_a_record.data or ''}}
+         </textarea>
+</ul>
+         <br>
+<h5> What strategy do you use when deciding on the weight? </h5>
+<ul>
+
+        <textarea name="{{ form.strategy.name }}" rows="5" cols="40">
+            {{ form.strategy.data or '' }}
+        </textarea>
+
+</ul>
+
+
+<br>
+        <br>
+    </div>
+</div>
+
+<div style="flush:center; text-align: center;">
+    {{ next_button }}
+</div>
+{{ endblock }}
+
+
+{{ block app_styles }}
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        td {
+           border: 1px solid black;
+           background-color: bg-light mb-3;
+           color: black;
+           font-weight: solid;
+           font-size: 19px;
+           padding: 10px 10px 10px 10px;
+           text-align: center;
+        }
+        tr.hide_all > td, td.hide_all{
+           border-style:hidden;
+        }
+        tr.hide_right > td, td.hide_right{
+           border-right-style:hidden;
+        }
+        tr.hide_left > td, td.hide_left{
+           border-left-style:hidden;
+        }
+        tr.hide_top > td, td.hide_top{
+           border-top-style:hidden;
+        }
+        tr.hide_bottom > td, td.hide_bottom{
+           border-bottom-style:hidden;
+        }
+        tr.width_bottom > td, td.width_bottom{
+           border-bottom-width:4px;
+        }
+
+    </style>
+{{ endblock }}
