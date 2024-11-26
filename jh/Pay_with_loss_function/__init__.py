@@ -21,6 +21,22 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    Gender =  models.IntegerField(
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, 'Male'],
+            [1, 'Female'],
+            [2, 'Prefer not to say'],
+        ]
+    )
+    age = models.IntegerField()
+    Subject = models.StringField()
+    Have_you_learned = models.StringField()
+    truthfully_report = models.StringField()
+    keep_a_record = models.StringField()
+    strategy = models.StringField()
+
+
     bar_1 = models.FloatField()
     bar_2 = models.FloatField()
     bar_3 = models.FloatField()
@@ -159,5 +175,12 @@ class Results(Page):
     def is_displayed(player: Player):
         return player.round_number == 80
 
+class Survey(Page):
+    form_model = 'player'
+    form_fields = ['Gender', 'age', 'Subject', 'Have_you_learned', 'truthfully_report', 'keep_a_record', 'strategy']
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 80
 
-page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Results]
+
+page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Results, Survey]
