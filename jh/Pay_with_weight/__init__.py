@@ -203,4 +203,4 @@ class Survey(Page):
         return player.round_number == 80
 
 
-page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Decision_last_round, Results, Survey]
+page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Decision_last_round, Survey, Results]

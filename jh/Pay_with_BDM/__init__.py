@@ -175,4 +175,4 @@ class Survey(Page):
     def is_displayed(player: Player):
         return player.round_number == 80
 
-page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Results, Survey]
+page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Survey, Results]
