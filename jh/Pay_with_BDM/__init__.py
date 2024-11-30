@@ -38,11 +38,11 @@ class Player(BasePlayer):
     bar_3 = models.FloatField()
     bar_4 = models.FloatField()
     bar_5 = models.FloatField()
-    random_number_1 = models.IntegerField()
-    random_number_2 = models.IntegerField()
-    random_number_3 = models.IntegerField()
-    random_number_4 = models.IntegerField()
-    random_number_5 = models.IntegerField()
+    random_number_1 = models.FloatField()
+    random_number_2 = models.FloatField()
+    random_number_3 = models.FloatField()
+    random_number_4 = models.FloatField()
+    random_number_5 = models.FloatField()
     random_number_g1 = models.FloatField()
     random_number_g2 = models.FloatField()
     normal_number_g1 = models.FloatField()
@@ -58,11 +58,11 @@ class Player(BasePlayer):
     d = models.IntegerField()
 
     def calculate_payoff(self):
-        self.random_number_1 = random.randint(1, 100)
-        self.random_number_2 = random.randint(1, 100)
-        self.random_number_3 = random.randint(1, 100)
-        self.random_number_4 = random.randint(1, 100)
-        self.random_number_5 = random.randint(1, 100)
+        self.random_number_1 = round(random.uniform(0.01, 99.96), 2)
+        self.random_number_2 = round(random.uniform(0.01, 99.96), 2)
+        self.random_number_3 = round(random.uniform(0.01, 99.96), 2)
+        self.random_number_4 = round(random.uniform(0.01, 99.96), 2)
+        self.random_number_5 = round(random.uniform(0.01, 99.96), 2)
 
         self.payoff_1 = 20 if self.random_number_1 < self.bar_1 else 0
         self.payoff_2 = 20 if self.random_number_2 < self.bar_2 else 0
