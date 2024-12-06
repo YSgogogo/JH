@@ -43,6 +43,7 @@ class Player(BasePlayer):
     normal_number_g1 = models.FloatField()
     normal_number_g2 = models.FloatField()
     pre_payoff = models.FloatField()
+    generated_number = models.FloatField()
     selected_round = models.FloatField()
     a = models.IntegerField()
     b = models.IntegerField()
@@ -65,10 +66,10 @@ class Player(BasePlayer):
 
     def generate_number(self, distribution):
         if distribution == 'uniform':
-            generated_number = round(random.uniform(-10, 10), 2)
+            self.generated_number = round(random.uniform(-10, 10), 2)
         elif distribution == 'normal':
-            generated_number = random.gauss(0, math.sqrt(33.33))
-        return generated_number
+            self.generated_number = round(random.gauss(0, math.sqrt(33.33)), 2)
+        return self.generated_number
 
     def calculate_payoff(self):
         if self.round_number == self.in_round(1).a + 20:
@@ -120,7 +121,11 @@ class Round_1_1(Page):
 class Round_1_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        random_number_g2 = round(random.uniform(-10, 10), 2)
+        if player.round_number == player.in_round(1).a + 21:
+            random_number_g2 = player.in_round(player.round_number - 1).generated_number
+        else:
+            random_number_g2 = round(random.uniform(-10, 10), 2)
+
         player.random_number_g2 = random_number_g2
         return {
             'random_number_g2': random_number_g2,
@@ -150,7 +155,11 @@ class Round_2_1(Page):
 class Round_2_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        normal_number_g2 = random.gauss(0, math.sqrt(33.33))
+        if player.round_number == player.in_round(1).b + 21:
+            normal_number_g2 = player.in_round(player.round_number - 1).generated_number
+        else:
+            normal_number_g2 = random.gauss(0, math.sqrt(33.33))
+
         player.normal_number_g2 = round(normal_number_g2, 2)
         return {
             'normal_number_g2': player.normal_number_g2,
