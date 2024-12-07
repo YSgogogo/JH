@@ -58,8 +58,14 @@ class Player(BasePlayer):
 
     def calculate_payoff(self):
         if self.round_number in [self.in_round(1).a + 20, self.in_round(1).a + 40]:
-            log_sum = sum(math.log(getattr(self, f'bar_{i}') / 100) for i in range(1, 6))
-            payoff = max(0, 1000 + 20 * log_sum)
+            log_sum = (
+                0.2 * math.log(self.bar_1 / 100) +
+                0.2 * math.log(self.bar_2 / 100) +
+                0.2 * math.log(self.bar_3 / 100) +
+                0.2 * math.log(self.bar_4 / 100) +
+                0.2 * math.log(self.bar_5 / 100)
+            )
+            payoff = max(0, 1000 + 100 * log_sum)
             self.payoff = payoff
         elif self.round_number in [self.in_round(1).b + 20, self.in_round(1).b + 40]:
             log_sum = (
