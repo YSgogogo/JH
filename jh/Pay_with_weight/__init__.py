@@ -52,15 +52,15 @@ class Player(BasePlayer):
 
     def calculate_round_payoff(self, generated_number):
         if generated_number < -6:
-            return self.bar_1
+            return round(10 * self.bar_1, 2)
         elif -6 <= generated_number < -2:
-            return self.bar_2
+            return round(10 * self.bar_2, 2)
         elif -2 <= generated_number < 2:
-            return self.bar_3
+            return round(10 * self.bar_3, 2)
         elif 2 <= generated_number < 6:
-            return self.bar_4
+            return round(10 * self.bar_4, 2)
         elif 6 <= generated_number:
-            return self.bar_5
+            return round(10 * self.bar_5, 2)
         else:
             return 0
 
