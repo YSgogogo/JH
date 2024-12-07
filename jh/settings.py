@@ -30,7 +30,7 @@ MIDDLEWARE = [
 
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.0025, participation_fee=5.00, doc=""
+    real_world_currency_per_point=0.001, participation_fee=5.00, doc=""
 )
 
 PARTICIPANT_FIELDS = []
@@ -42,6 +42,7 @@ LANGUAGE_CODE = 'en'
 
 REAL_WORLD_CURRENCY_CODE = '£'
 USE_POINTS = True
+POINTS_CUSTOM_NAME = 'ECUs'
 
 ROOMS = [
     dict(

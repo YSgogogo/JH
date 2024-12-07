@@ -28,16 +28,81 @@
         <thead>
         <tr>
 
-            <td> Additional Earning (400 points = £1) </td>
-            <td> show-up</td>
-            <td> Total </td>
+            <td>   </td>
+            <td>   </td>
+            <td> smaller than -6 </td>
+            <td> between -6 and -2 </td>
+            <td> between -2 and 2 </td>
+            <td> between 2 and 6 </td>
+            <td> greater than 6 </td>
+            <td> Your earnings (ECU)</td>
         </tr>
         </thead>
 
         <tr class="active-row">
-            <td class="hide_bottom"> {{participant.payoff}}  </td>
-            <td class="hide_bottom"> £5.00 </td>
-            <td class="hide_bottom"> {{participant.payoff_plus_participation_fee()}} </td>
+            <td class="hide_bottom"> Round 1 </td>
+            <td class="hide_bottom"> {{round_1}}</td>
+            <td class="hide_bottom"> {{data_1}}%</td>
+            <td class="hide_bottom"> {{data_2}}%</td>
+            <td class="hide_bottom"> {{data_3}}%</td>
+            <td class="hide_bottom"> {{data_4}}%</td>
+            <td class="hide_bottom"> {{data_5}}%</td>
+            <td class="hide_bottom">  </td>
+        </tr>
+
+        <tr class="active-row">
+            <td class="hide_bottom">  </td>
+            <td class="hide_bottom"> period 20</td>
+            <td class="hide_bottom"> {{bar1_20}}%</td>
+            <td class="hide_bottom"> {{bar2_20}}%</td>
+            <td class="hide_bottom"> {{bar3_20}}%</td>
+            <td class="hide_bottom"> {{bar4_20}}%</td>
+            <td class="hide_bottom"> {{bar5_20}}%</td>
+            <td class="hide_bottom"> {{round_20_payoff}}  </td>
+        </tr>
+
+        <tr class="active-row">
+            <td class="hide_bottom">  </td>
+            <td class="hide_bottom"> period 40</td>
+            <td class="hide_bottom"> {{bar1_40}}%</td>
+            <td class="hide_bottom"> {{bar2_40}}%</td>
+            <td class="hide_bottom"> {{bar3_40}}%</td>
+            <td class="hide_bottom"> {{bar4_40}}%</td>
+            <td class="hide_bottom"> {{bar5_40}}%</td>
+            <td class="hide_bottom"> {{round_40_payoff}}  </td>
+        </tr>
+
+        <tr class="active-row">
+            <td class="hide_bottom"> Round 2 </td>
+            <td class="hide_bottom"> {{round_2}}</td>
+            <td class="hide_bottom"> {{data_6}}%</td>
+            <td class="hide_bottom"> {{data_7}}%</td>
+            <td class="hide_bottom"> {{data_8}}%</td>
+            <td class="hide_bottom"> {{data_9}}%</td>
+            <td class="hide_bottom"> {{data_10}}%</td>
+            <td class="hide_bottom">  </td>
+        </tr>
+
+        <tr class="active-row">
+            <td class="hide_bottom">  </td>
+            <td class="hide_bottom"> period 20</td>
+            <td class="hide_bottom"> {{bar1_60}}%</td>
+            <td class="hide_bottom"> {{bar2_60}}%</td>
+            <td class="hide_bottom"> {{bar3_60}}%</td>
+            <td class="hide_bottom"> {{bar4_60}}%</td>
+            <td class="hide_bottom"> {{bar5_60}}%</td>
+            <td class="hide_bottom"> {{round_60_payoff}}  </td>
+        </tr>
+
+        <tr class="active-row">
+            <td class="hide_bottom">  </td>
+            <td class="hide_bottom"> period 40</td>
+            <td class="hide_bottom"> {{bar1_80}}%</td>
+            <td class="hide_bottom"> {{bar2_80}}%</td>
+            <td class="hide_bottom"> {{bar3_80}}%</td>
+            <td class="hide_bottom"> {{bar4_80}}%</td>
+            <td class="hide_bottom"> {{bar5_80}}%</td>
+            <td class="hide_bottom"> {{round_80_payoff}}  </td>
         </tr>
 
 
@@ -47,8 +112,9 @@
 
 
 <ul>
+  <li>  Your show-up fee: £ 5.00 </li>
+  <li>  1000 ECUs = £ 1.00 </li>
   <li>  Your final payment in this experiment is therefore {{participant.payoff_plus_participation_fee()}} . </li>
-  <li>  We are preparing for your payment. Please wait...</li>
 </ul>
 
             </div>
@@ -68,7 +134,7 @@
            background-color: bg-light mb-3;
            color: black;
            font-weight: solid;
-           font-size: 19px;
+           font-size: 12px;
            padding: 10px 10px 10px 10px;
            text-align: center;
         }

@@ -52,15 +52,15 @@ class Player(BasePlayer):
 
     def calculate_round_payoff(self, generated_number):
         if generated_number < -6:
-            return 100 * self.bar_1
+            return self.bar_1
         elif -6 <= generated_number < -2:
-            return 100 * self.bar_2
+            return self.bar_2
         elif -2 <= generated_number < 2:
-            return 100 * self.bar_3
+            return self.bar_3
         elif 2 <= generated_number < 6:
-            return 100 * self.bar_4
+            return self.bar_4
         elif 6 <= generated_number:
-            return 100 * self.bar_5
+            return self.bar_5
         else:
             return 0
 
@@ -194,15 +194,115 @@ class Decision_last_round(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.calculate_payoff()
-        selected_round = random.choice([20, 40, 60, 80])
-        player.selected_round = selected_round
-        player.payoff = player.in_round(selected_round).pre_payoff
-        player.payoff *= 0.01
+        selected_rounds = [20, 40, 60, 80]
+        total_payoff = 0
+        for round_num in selected_rounds:
+            round_payoff = player.in_round(round_num).pre_payoff
+            total_payoff += round_payoff
+        player.payoff = total_payoff
+
 class Results(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 80
 
+    @staticmethod
+    def vars_for_template(player: Player):
+        round_20_payoff = player.in_round(20).pre_payoff
+        round_40_payoff = player.in_round(40).pre_payoff
+        round_60_payoff = player.in_round(60).pre_payoff
+        round_80_payoff = player.in_round(80).pre_payoff
+
+        bar1_20 = player.in_round(20).bar_1
+        bar2_20 = player.in_round(20).bar_2
+        bar3_20 = player.in_round(20).bar_3
+        bar4_20 = player.in_round(20).bar_4
+        bar5_20 = player.in_round(20).bar_5
+
+        bar1_40 = player.in_round(40).bar_1
+        bar2_40 = player.in_round(40).bar_2
+        bar3_40 = player.in_round(40).bar_3
+        bar4_40 = player.in_round(40).bar_4
+        bar5_40 = player.in_round(40).bar_5
+
+        bar1_60 = player.in_round(60).bar_1
+        bar2_60 = player.in_round(60).bar_2
+        bar3_60 = player.in_round(60).bar_3
+        bar4_60 = player.in_round(60).bar_4
+        bar5_60 = player.in_round(60).bar_5
+
+        bar1_80 = player.in_round(80).bar_1
+        bar2_80 = player.in_round(80).bar_2
+        bar3_80 = player.in_round(80).bar_3
+        bar4_80 = player.in_round(80).bar_4
+        bar5_80 = player.in_round(80).bar_5
+
+        if player.in_round(1).a == 0:
+            round_1 = "uniform"
+            round_2 = "normal"
+            data_6 = 14.93
+            data_7 = 21.52
+            data_8 = 27.10
+            data_9 = 21.52
+            data_10 = 14.93
+            data_1 = 20
+            data_2 = 20
+            data_3 = 20
+            data_4 = 20
+            data_5 = 20
+        else:
+            round_2 = "uniform"
+            round_1 = "normal"
+            data_1 = 14.93
+            data_2 = 21.52
+            data_3 = 27.10
+            data_4 = 21.52
+            data_5 = 14.93
+            data_6 = 20
+            data_7 = 20
+            data_8 = 20
+            data_9 = 20
+            data_10 = 20
+
+
+        return {
+            'round_20_payoff': round_20_payoff,
+            'round_40_payoff': round_40_payoff,
+            'round_60_payoff': round_60_payoff,
+            'round_80_payoff': round_80_payoff,
+            'round_1': round_1,
+            'round_2': round_2,
+            'bar1_20': bar1_20,
+            'bar2_20': bar2_20,
+            'bar3_20': bar3_20,
+            'bar4_20': bar4_20,
+            'bar5_20': bar5_20,
+            'bar1_40': bar1_40,
+            'bar2_40': bar2_40,
+            'bar3_40': bar3_40,
+            'bar4_40': bar4_40,
+            'bar5_40': bar5_40,
+            'bar1_60': bar1_60,
+            'bar2_60': bar2_60,
+            'bar3_60': bar3_60,
+            'bar4_60': bar4_60,
+            'bar5_60': bar5_60,
+            'bar1_80': bar1_80,
+            'bar2_80': bar2_80,
+            'bar3_80': bar3_80,
+            'bar4_80': bar4_80,
+            'bar5_80': bar5_80,
+            'data_6' : data_6,
+            'data_7' : data_7,
+            'data_8' : data_8,
+            'data_9' : data_9,
+            'data_10' : data_10,
+            'data_1' : data_1,
+            'data_2' : data_2,
+            'data_3' : data_3,
+            'data_4' : data_4,
+            'data_5' : data_5,
+        }
 
 class Survey(Page):
     form_model = 'player'
