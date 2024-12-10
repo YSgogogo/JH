@@ -35,7 +35,7 @@ class Player(BasePlayer):
     truthfully_report = models.StringField()
     keep_a_record = models.StringField()
     strategy = models.StringField()
-
+    follow_real_process = models.StringField()
 
     bar_1 = models.FloatField()
     bar_2 = models.FloatField()
@@ -282,10 +282,59 @@ class Results(Page):
 
 class Survey(Page):
     form_model = 'player'
-    form_fields = ['Gender', 'age', 'Subject', 'Have_you_learned', 'truthfully_report', 'keep_a_record', 'strategy']
+    form_fields = ['Gender', 'age', 'Subject', 'Have_you_learned', 'truthfully_report', 'keep_a_record', 'strategy', 'follow_real_process']
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 80
+
+    @staticmethod
+    def vars_for_template(player: Player):
+
+        if player.in_round(1).a == 0:
+            round_1 = "uniform"
+            round_2 = "normal"
+            data_6 = 14.93
+            data_7 = 21.52
+            data_8 = 27.10
+            data_9 = 21.52
+            data_10 = 14.93
+            data_1 = 20
+            data_2 = 20
+            data_3 = 20
+            data_4 = 20
+            data_5 = 20
+        else:
+            round_2 = "uniform"
+            round_1 = "normal"
+            data_1 = 14.93
+            data_2 = 21.52
+            data_3 = 27.10
+            data_4 = 21.52
+            data_5 = 14.93
+            data_6 = 20
+            data_7 = 20
+            data_8 = 20
+            data_9 = 20
+            data_10 = 20
+
+
+        return {
+            'round_1': round_1,
+            'round_2': round_2,
+            'data_6' : data_6,
+            'data_7' : data_7,
+            'data_8' : data_8,
+            'data_9' : data_9,
+            'data_10' : data_10,
+            'data_1' : data_1,
+            'data_2' : data_2,
+            'data_3' : data_3,
+            'data_4' : data_4,
+            'data_5' : data_5,
+        }
+
+
+
 
 
 page_sequence = [Welcome, Instructions, Round_1_1, Round_1_2, Round_2_1, Round_2_2, Decision, Survey, Results]
