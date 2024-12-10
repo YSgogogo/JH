@@ -63,6 +63,58 @@
 
 </ul>
 
+<h5>  The real distribution is as follows, Do you follow this distribution when making your allocations? </h5>
+<ul>
+<br>
+    <table class="mx-auto & styled-table">
+        <thead>
+        <tr>
+
+            <td>   </td>
+            <td>   </td>
+            <td>   </td>
+            <td> smaller than -6 </td>
+            <td> between -6 and -2 </td>
+            <td> between -2 and 2 </td>
+            <td> between 2 and 6 </td>
+            <td> greater than 6 </td>
+        </tr>
+        </thead>
+
+        <tr class="active-row">
+            <td class="hide_bottom"> Round 1 </td>
+            <td class="hide_bottom"> The true distribution of data is: {{round_1}} </td>
+            <td class="hide_bottom"> True Weight </td>
+            <td class="hide_bottom"> {{data_1}}%</td>
+            <td class="hide_bottom"> {{data_2}}%</td>
+            <td class="hide_bottom"> {{data_3}}%</td>
+            <td class="hide_bottom"> {{data_4}}%</td>
+            <td class="hide_bottom"> {{data_5}}%</td>
+        </tr>
+
+
+
+
+        <tr class="active-row">
+            <td> Round 2 </td>
+            <td> The true distribution of data is: {{round_2}}</td>
+            <td> True Weight </td>
+            <td> {{data_6}}%</td>
+            <td> {{data_7}}%</td>
+            <td> {{data_8}}%</td>
+            <td> {{data_9}}%</td>
+            <td> {{data_10}}%</td>
+        </tr>
+
+    </table>
+<br>
+
+
+        <textarea name="{{ form.follow_real_process.name }}" rows="5" cols="40">
+            {{ form.follow_real_process.data or '' }}
+        </textarea>
+
+</ul>
 
 <br>
         <br>
